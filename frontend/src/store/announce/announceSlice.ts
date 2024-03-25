@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { AnnounceType } from '../../../../backend/src/share-type';
-type AnnounceState = {
+export type AnnounceState = {
   announceData: AnnounceType | null;
   loading: boolean;
-  error: string;
+  error: string | null;
 };
 
 const initialState: AnnounceState = {
   announceData: null,
   loading: false,
-  error: '',
+  error: null,
 };
 
 const announceSlice = createSlice({
@@ -25,6 +25,7 @@ const announceSlice = createSlice({
     ) => {
       state.announceData = action.payload;
       state.loading = false;
+      state.error = null;
     },
     fetchAnnounceFailure: (
       state: AnnounceState,
