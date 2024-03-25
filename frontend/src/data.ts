@@ -1,12 +1,5 @@
 import { nanoid } from '@reduxjs/toolkit';
-import {
-  FaBitcoin,
-  FaCamera,
-  FaCoffee,
-  FaHeartbeat,
-  FaPenNib,
-  FaPodcast,
-} from 'react-icons/fa';
+import { FaCamera, FaCoffee, FaHeartbeat, FaPenNib } from 'react-icons/fa';
 import { FaKitchenSet } from 'react-icons/fa6';
 import {
   GiDelicatePerfume,
@@ -135,22 +128,6 @@ export const menu = [
     title: 'Explore',
     path: '/explore',
     icon: MdOutlineExplore,
-  },
-];
-
-export const announce = [
-  {
-    id: nanoid(),
-    title: 'Pantip Daily Podcast',
-    description: '3 อันดับกระทู้ฮิตบนพันทิป ประจำวันที่ 21 มีนาคม 📊',
-    separatorIcon: FaPodcast,
-  },
-  {
-    id: nanoid(),
-    title: 'Pantip Point',
-    description:
-      'มีนามีใจ...ชวนเธอคนดีมาเล่น #เกมเขาวงกต พร้อมตามหาน้องเพี้ยนกัน ! 🧐🔎',
-    separatorIcon: FaBitcoin,
   },
 ];
 
