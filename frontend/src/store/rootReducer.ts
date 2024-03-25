@@ -1,7 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import uiControlsSlice from './ui-controls/uiControlsSlice';
+import announceSlice from './announce/announceSlice';
 
-const rootReducer = combineReducers({ uiControls: uiControlsSlice });
+const rootReducer = combineReducers({ announce: announceSlice });
 
 export type RootState = ReturnType<typeof rootReducer>;
 

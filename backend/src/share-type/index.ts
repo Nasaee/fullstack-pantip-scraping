@@ -4,5 +4,5 @@ export type AnnounceType = {
     title: string;
     link: string;
     description: string;
-  }[];
+  };
 };

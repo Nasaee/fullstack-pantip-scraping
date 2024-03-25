@@ -1,24 +1,17 @@
 import { menu } from '@/data';
-import { RootState } from '@/store/rootReducer';
-import { toggleSidebar } from '@/store/ui-controls/uiControlsSlice';
+import { useState } from 'react';
 import { IoMenuOutline } from 'react-icons/io5';
-import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 const SideBarMenu = () => {
-  const dispatch = useDispatch();
-  const isSideBarOpen = useSelector(
-    (state: RootState) => state.uiControls.isSidebarOpen
-  );
-  const toggleSidebarMenu = () => {
-    dispatch(toggleSidebar());
-  };
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+
   return (
     <nav className='flex flex-col gap-3'>
       <div className='flex justify-center px-4 mb-5'>
         <button
           className='grid place-items-center w-8 h-8 bg-gray-400 hover:bg-violet-500 text-white rounded-full'
-          onClick={toggleSidebarMenu}
+          onClick={() => setIsSideBarOpen(!isSideBarOpen)}
         >
           <IoMenuOutline className='text-xl' />
         </button>

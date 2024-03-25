@@ -5,7 +5,7 @@ const announceRouter = express.Router();
 
 announceRouter.get('/', async (req: Request, res: Response) => {
   try {
-    const announceData = await Announce.find({}, { __v: 0 });
+    const announceData = await Announce.findOne({ header: 'Announce' });
     return res.status(200).json(announceData);
   } catch (error) {
     console.log(error);

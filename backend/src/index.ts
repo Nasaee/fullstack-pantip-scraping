@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, '../../client/dist')));
 app.use('/api/announce', announceRouter);
 
 app.use('*', (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
+  res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
 });
 
 async function startServer() {
