@@ -7,3 +7,9 @@ export type AnnounceType = {
     description: string;
   }[];
 };
+
+export type RoomDataType = {
+  title: string;
+  link: string;
+  iconUrl: string;
+};
