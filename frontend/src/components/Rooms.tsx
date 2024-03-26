@@ -77,6 +77,7 @@ const Rooms = () => {
               <CarouselItem key={_id} className='basis-1/3 lg:basis-1/6 py-5'>
                 <a
                   href={link}
+                  target='_blank'
                   className='flex flex-col gap-2 items-center p-4 hover:border-b border-slate-400 transition-all bg-violet-600 text-white'
                 >
                   <img src={iconUrl} className='w-10 h-10' />

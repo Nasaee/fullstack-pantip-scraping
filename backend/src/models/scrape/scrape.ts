@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 const WEB_URL = 'https://pantip.com';
+const WEB_CONTENT_URL = 'https://pantip.com/home/pick';
 export async function announceScrape() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
@@ -82,4 +83,55 @@ export async function pantipRoomScrape() {
   await browser.close();
 }
 
-// announceScrape();
+export async function getPantipPostContents() {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto(WEB_CONTENT_URL);
+
+  const postContents = await page.$$eval(
+    '.pt-list.pt-list__type-a li.pt-list-item',
+    (elements) =>
+      elements.map((el) => {
+        const regexUrlPattern = /url\("([^"]+)"\)/;
+        const imageUrl =
+          el.querySelector('.pt-list-item__img')?.getAttribute('style') || '';
+
+        const matches = imageUrl.match(regexUrlPattern);
+
+        const tags = Array.from(
+          el.querySelectorAll('div.pt-list-item__tag a.gtm-pick-link'),
+          (el) => {
+            return {
+              tagName: el?.textContent || '',
+              tagLink: el?.getAttribute('href')
+                ? 'https://pantip.com' + el?.getAttribute('href')
+                : '',
+            };
+          }
+        );
+
+        const author = {
+          authorName: el.querySelector('h5>a.gtm-pick-link')?.textContent || '',
+          authorProfileUrl:
+            el.querySelector('h5>a.gtm-pick-link')?.getAttribute('href') || '',
+        };
+
+        return {
+          header: el.querySelector('h2')?.textContent,
+          contentImageUrl: matches ? matches[1] : '',
+          link:
+            el.querySelector('h2>a.gtm-pick-link')?.getAttribute('href') || '',
+          tags,
+          author,
+        };
+      })
+  );
+  fs.writeFile(
+    path.join(__dirname, './store/postContents.json'),
+    JSON.stringify(postContents),
+    (err: any) => {
+      if (err) throw err;
+      console.log('The postContents has been saved!');
+    }
+  );
+}

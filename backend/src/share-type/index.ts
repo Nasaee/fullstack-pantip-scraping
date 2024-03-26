@@ -1,10 +1,10 @@
 export type AnnounceType = {
   header: string;
-  announceContent: {
+  announceContent: Array<{
     title: string;
     link: string;
     description: string;
-  }[];
+  }>;
 };
 
 export type RoomDataType = {
@@ -12,4 +12,19 @@ export type RoomDataType = {
   title: string;
   link: string;
   iconUrl: string;
+};
+
+export type ContentsType = {
+  _id: string;
+  header: string;
+  contentImageUrl: string;
+  link: string;
+  tags: Array<{
+    tagName: string;
+    tagLink: string;
+  }>;
+  author: {
+    authorName: string;
+    authorProfileUrl: string;
+  };
 };

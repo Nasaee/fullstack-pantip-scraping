@@ -5,9 +5,18 @@ const announceSchema = new mongoose.Schema<AnnounceType>({
   header: String,
   announceContent: [
     {
-      title: String,
-      link: String,
-      description: String,
+      title: {
+        type: String,
+        required: true,
+      },
+      link: {
+        type: String,
+        required: true,
+      },
+      description: {
+        type: String,
+        required: true,
+      },
     },
   ],
 });

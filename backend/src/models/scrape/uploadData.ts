@@ -1,8 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import Announce from '../announce.model';
-import { AnnounceType, RoomDataType } from '../../share-type';
+import { AnnounceType, ContentsType, RoomDataType } from '../../share-type';
 import RoomData from '../roomsData.model';
+import Contents from '../contents.model';
 
 export async function uploadAnnounceData() {
   fs.readFile(
@@ -43,6 +44,27 @@ export async function uploadRoomData() {
       try {
         await RoomData.insertMany(uploadData);
         console.log('Room data uploaded successfully');
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  );
+}
+
+export async function uploadContents() {
+  fs.readFile(
+    path.join(__dirname, './store/postContents.json'),
+    'utf8',
+    async (err, data) => {
+      if (err) {
+        console.error(err);
+        throw err;
+      }
+
+      const uploadData: ContentsType[] = JSON.parse(data);
+
+      try {
+        await Contents.insertMany(uploadData);
       } catch (error) {
         console.error(error);
       }

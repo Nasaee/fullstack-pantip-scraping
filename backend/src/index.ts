@@ -2,10 +2,17 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import path from 'path';
-import { uploadAnnounceData, uploadRoomData } from './models/scrape/uploadData';
+import {
+  uploadAnnounceData,
+  uploadContents,
+  uploadRoomData,
+} from './models/scrape/uploadData';
 import { mongoConnect } from './utils/mongoConnect';
 import announceRouter from './routes/announce.route';
-import { pantipRoomScrape } from './models/scrape/scrape';
+import {
+  getPantipPostContents,
+  pantipRoomScrape,
+} from './models/scrape/scrape';
 import roomsDataRouter from './routes/roomsData.route';
 
 const PORT = process.env.PORT;
@@ -32,8 +39,12 @@ app.use('*', (req: Request, res: Response) => {
 
 async function startServer() {
   mongoConnect();
+  // announceScrape();
+  // pantipRoomScrape();
+  // getPantipPostContents();
   uploadAnnounceData();
   uploadRoomData();
+  uploadContents();
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
