@@ -9,7 +9,7 @@ import {
 } from './roomsDataSlice';
 
 const fetchRoomsData = async (): Promise<RoomDataType[]> => {
-  const response = await axios.get(`${API_URL}/api/announce`);
+  const response = await axios.get(`${API_URL}/api/roomsData`);
   return response.data;
 };
 

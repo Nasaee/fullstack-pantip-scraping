@@ -1,6 +1,7 @@
 import { menu } from '@/data';
+
 import { useState } from 'react';
-import { IoMenuOutline } from 'react-icons/io5';
+import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
 
 const SideBarMenu = () => {
@@ -10,10 +11,10 @@ const SideBarMenu = () => {
     <nav className='flex flex-col gap-3'>
       <div className='flex justify-center px-4 mb-5'>
         <button
-          className='grid place-items-center w-8 h-8 bg-gray-400 hover:bg-violet-500 text-white rounded-full'
+          className='grid place-items-center  rounded-full hover:text-violet-500'
           onClick={() => setIsSideBarOpen(!isSideBarOpen)}
         >
-          <IoMenuOutline className='text-xl' />
+          {isSideBarOpen ? <FaArrowLeftLong /> : <FaArrowRightLong />}
         </button>
       </div>
 

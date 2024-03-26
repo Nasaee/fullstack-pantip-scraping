@@ -63,7 +63,11 @@ const Announce = () => {
           const { _id, title, link, description } = content;
           return (
             <li key={_id} className='underline'>
-              <a href={link} className='flex items-center gap-2'>
+              <a
+                href={link}
+                className='flex items-center gap-2'
+                target='_blank'
+              >
                 <h4 className='font-bold'>{title}</h4>
 
                 {description}

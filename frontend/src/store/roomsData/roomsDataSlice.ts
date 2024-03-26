@@ -3,13 +3,13 @@ import { RoomDataType } from '../../../../backend/src/share-type';
 
 export type RoomsDataState = {
   roomsData: RoomDataType[] | [];
-  loading: boolean;
+  isLoading: boolean;
   error: string | null;
 };
 
 const initialState: RoomsDataState = {
   roomsData: [],
-  loading: false,
+  isLoading: false,
   error: null,
 };
 
@@ -18,14 +18,14 @@ const roomsDataSlice = createSlice({
   initialState,
   reducers: {
     fetchRoomsDataStart: (state: RoomsDataState) => {
-      state.loading = true;
+      state.isLoading = true;
     },
     fetchRoomsDataSuccess: (
       state: RoomsDataState,
       action: PayloadAction<RoomDataType[]>
     ) => {
       state.roomsData = action.payload;
-      state.loading = false;
+      state.isLoading = false;
       state.error = null;
     },
     fetchRoomsDataFailure: (
@@ -33,7 +33,7 @@ const roomsDataSlice = createSlice({
       action: PayloadAction<string>
     ) => {
       state.error = action.payload;
-      state.loading = false;
+      state.isLoading = false;
     },
   },
 });
