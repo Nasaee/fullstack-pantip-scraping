@@ -1,6 +1,8 @@
 export type AnnounceType = {
+  _id: string;
   header: string;
   announceContent: Array<{
+    _id: string;
     title: string;
     link: string;
     description: string;
