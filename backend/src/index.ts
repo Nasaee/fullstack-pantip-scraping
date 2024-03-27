@@ -20,8 +20,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: '*', // development
-    // origin: process.env.FRONTEND_URL,// production
+    // origin: '*', // development
+    origin: process.env.FRONTEND_URL, // production
   })
 );
 

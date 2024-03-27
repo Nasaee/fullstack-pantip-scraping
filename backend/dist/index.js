@@ -30,8 +30,8 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use((0, cors_1.default)({
-    origin: '*', // development
-    // origin: process.env.FRONTEND_URL,// production
+    // origin: '*', // development
+    origin: process.env.FRONTEND_URL, // production
 }));
 app.use(express_1.default.static(path_1.default.join(__dirname, '../../client/dist')));
 app.use('/api/announce', announce_route_1.default);
