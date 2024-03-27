@@ -38,6 +38,9 @@ const contentsSchema = new mongoose.Schema<ContentsType>({
       required: true,
     },
   },
+  commentCount: {
+    type: Number,
+  },
 });
 
 const Contents = mongoose.model<ContentsType>('Contents', contentsSchema);

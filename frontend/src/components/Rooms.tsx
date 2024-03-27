@@ -48,7 +48,7 @@ const Rooms = () => {
               return (
                 <CarouselItem key={i} className='basis-1/3 lg:basis-1/6 py-5'>
                   <div className='p-4'>
-                    <SkeletonTheme baseColor='#dee2e6' highlightColor='#ced4da'>
+                    <SkeletonTheme baseColor='#d0d3d6' highlightColor='#dce1e6'>
                       <Skeleton height='80px' />
                     </SkeletonTheme>
                   </div>
@@ -63,7 +63,7 @@ const Rooms = () => {
     );
   }
   return (
-    <div className='flex justify-center max-w-7xl mx-auto'>
+    <div className='flex justify-center max-w-7xl mx-auto px-3'>
       <Carousel
         opts={{
           align: 'center',
@@ -74,21 +74,21 @@ const Rooms = () => {
           {roomData.map((room) => {
             const { _id, title, link, iconUrl } = room;
             return (
-              <CarouselItem key={_id} className='basis-1/3 lg:basis-1/6 py-5'>
+              <CarouselItem key={_id} className='basis-1/3 lg:basis-1/6 py-3'>
                 <a
                   href={link}
                   target='_blank'
-                  className='flex flex-col gap-2 items-center p-4 hover:border-b border-slate-400 transition-all bg-violet-600 text-white'
+                  className='flex flex-col gap-2 items-center py-2 hover:border-b border-slate-400 transition-all bg-violet-600 text-white'
                 >
-                  <img src={iconUrl} className='w-10 h-10' />
-                  <p>{title}</p>
+                  <img src={iconUrl} className='w-4 h-4 md:w-8 md:h-8' />
+                  <p className='text-xs md:text-sm'>{title}</p>
                 </a>
               </CarouselItem>
             );
           })}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className='hidden md:inline-flex' />
+        <CarouselNext className='hidden md:inline-flex' />
       </Carousel>
     </div>
   );

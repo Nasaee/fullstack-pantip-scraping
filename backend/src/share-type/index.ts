@@ -20,6 +20,7 @@ export type ContentsType = {
   contentImageUrl: string;
   link: string;
   tags: Array<{
+    _id: string;
     tagName: string;
     tagLink: string;
   }>;
@@ -27,4 +28,12 @@ export type ContentsType = {
     authorName: string;
     authorProfileUrl: string;
   };
+  commentCount: number;
+};
+
+export type ContentsResponseType = {
+  data: ContentsType[];
+  totalPages: number;
+  currentPage: number;
+  nextPage: number | null;
 };

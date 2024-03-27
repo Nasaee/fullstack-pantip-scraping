@@ -116,6 +116,10 @@ export async function getPantipPostContents() {
             el.querySelector('h5>a.gtm-pick-link')?.getAttribute('href') || '',
         };
 
+        const commentCount = el
+          .querySelector('span.pt-li_stats-comment')
+          ?.textContent?.replace('message', '');
+
         return {
           header: el.querySelector('h2')?.textContent,
           contentImageUrl: matches ? matches[1] : '',
@@ -123,9 +127,11 @@ export async function getPantipPostContents() {
             el.querySelector('h2>a.gtm-pick-link')?.getAttribute('href') || '',
           tags,
           author,
+          commentCount: parseInt(commentCount || '0'),
         };
       })
   );
+
   fs.writeFile(
     path.join(__dirname, './store/postContents.json'),
     JSON.stringify(postContents),

@@ -65,6 +65,7 @@ export async function uploadContents() {
 
       try {
         await Contents.insertMany(uploadData);
+        console.log('Contents data uploaded successfully');
       } catch (error) {
         console.error(error);
       }

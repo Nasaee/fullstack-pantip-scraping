@@ -9,11 +9,8 @@ import {
 } from './models/scrape/uploadData';
 import { mongoConnect } from './utils/mongoConnect';
 import announceRouter from './routes/announce.route';
-import {
-  getPantipPostContents,
-  pantipRoomScrape,
-} from './models/scrape/scrape';
 import roomsDataRouter from './routes/roomsData.route';
+import contentsRouter from './routes/contents.route';
 
 const PORT = process.env.PORT;
 
@@ -32,6 +29,7 @@ app.use(express.static(path.join(__dirname, '../../client/dist')));
 
 app.use('/api/announce', announceRouter);
 app.use('/api/roomsData', roomsDataRouter);
+app.use('/api/contents', contentsRouter);
 
 app.use('*', (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));

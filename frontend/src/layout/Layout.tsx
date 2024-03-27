@@ -9,8 +9,8 @@ import Register from '@/components/Register';
 
 const Layout = () => {
   return (
-    <div className='font-thai text-gray-500 bg-white z-50'>
-      <div className='sticky top-0 left-0 right-0 bg-white z-1000'>
+    <div className='font-thai text-gray-500 bg-white z-[9999]'>
+      <div className='bg-white z-1000'>
         <div className='border-2 border-slate-200'>
           <Header />
           <HeaderMobile />
