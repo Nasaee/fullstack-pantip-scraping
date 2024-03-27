@@ -25,7 +25,7 @@ app.use(
   })
 );
 
-app.use(express.static(path.join(__dirname, '../../client/dist')));
+app.use(express.static(path.join(__dirname, '../../frontend/dist')));
 
 app.use('/api/announce', announceRouter);
 app.use('/api/roomsData', roomsDataRouter);
